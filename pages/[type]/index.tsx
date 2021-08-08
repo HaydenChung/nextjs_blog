@@ -23,7 +23,7 @@ function Tech({ post, morePosts }) {
 
         if(postId != post.id) {
             setPostId(post.id);
-            setPageInit(true);
+            setPageInit(false);
             return;
         }
 
@@ -39,7 +39,6 @@ function Tech({ post, morePosts }) {
                 {/* <Grid item md={12}> */}
                     <PostBody post={post} mounting={pageInit} />
                 {/* </Grid> */}
-                <Divider variant="middle" color="secondary" />
                 {/* <Grid item md={12}> */}
                     {
                         morePosts.map((morePost, ind) => <FloatedPostCard linkPrefix={`/${router.query.type}`} key={'post-card-'+ind} post={morePost} floatLeft={ind % 2 == 0} />)

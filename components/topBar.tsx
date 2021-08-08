@@ -3,7 +3,7 @@ import NavMenu from "./navMenu"
 import MenuIcon from "@material-ui/icons/Menu"
 import SearchIcon from "@material-ui/icons/Search"
 import BrightnessIcon from "@material-ui/icons/Brightness4TwoTone"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import LinearProgress from "@material-ui/core/LinearProgress"
 import Slide  from "@material-ui/core/Slide"
 import { useState } from 'react'
@@ -14,7 +14,7 @@ type TopBarProps = {
     isDarkMode: boolean
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=> ({
     root: {
         flexGrow: 1,
         zIndex: 99
@@ -24,8 +24,18 @@ const useStyles = makeStyles({
     },
     iconButton: {
         marginRight: '1rem'
+    },
+    toolbar: {
+        // minHeight: 128,
+        // alignItems: 'flex-start',
+        // paddingTop: theme.spacing(1),
+        // paddingBottom: theme.spacing(2),
+    },
+    navMenu: {
+        // flexGrow: 1,
+        // alignSelf: 'flex-end'
     }
-});
+}));
 
 
 export default function TopBar(props: TopBarProps) {
@@ -38,14 +48,14 @@ export default function TopBar(props: TopBarProps) {
     return (
         <div className={classes.root}>
             <AppBar position="static" >
-                <Toolbar>
+                <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
 
                     >
                         <MenuIcon />
                     </IconButton>
-                    <NavMenu displayLoadBar={setPageChanging.bind(this)} />
+                    <NavMenu prominent={true} displayLoadBar={setPageChanging.bind(this)} />
                     <IconButton onClick={()=> { setDarkMode(!isDarkMode) }}
                         edge="end"
                         className={classes.iconButton}

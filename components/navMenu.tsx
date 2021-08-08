@@ -1,8 +1,9 @@
-import Link from 'next/link';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { Typography, Tab, Tabs } from '@material-ui/core';
-import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+import Link from 'next/link'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { Typography, Tab, Tabs } from '@material-ui/core'
+import React, { useState, useEffect } from "react"
+import { useRouter } from 'next/router'
+import classnames from 'classnames'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,27 +12,25 @@ const useStyles = makeStyles((theme) => ({
     padding: {
         padding: theme.spacing(5),
     },
-    demo1: {
-        backgroundColor: theme.palette.background.paper,
-    },
-    demo2: {
-        // backgroundColor: '#2e1534',
-        width: '100%'
-    },
     topTab: {
         height: '6rem'
+    },
+    prominentDrop: {
+        flexGrow: 1,
+        alignSelf: 'flex-end',
     }
 }));
 
 type NavMenuProps = {
-    displayLoadBar: (isShow: boolean)=> {} 
+    displayLoadBar: (isShow: boolean)=> {} ,
+    prominent?: boolean
 }
 
 export default function NavMenu(props: NavMenuProps) {
 
     const classes = useStyles();
     const router = useRouter();
-    const { displayLoadBar } = props;
+    const { displayLoadBar, prominent } = props;
     const [value, setValue] = useState(0);
     const [targetPath, setTargetPath] = useState(router.asPath);
 
@@ -61,7 +60,7 @@ export default function NavMenu(props: NavMenuProps) {
     })
 
     return (
-        <div className={classes.root}>
+        <div className={classnames(classes.root, prominent && classes.prominentDrop)}>
             <Tabs centered={true} value={value} onChange={handleChange} aria-label="tabs">
                 <Tab label="Home" value={0} className={classes.topTab} />
                 <Tab label="Tech" value={1} className={classes.topTab} />

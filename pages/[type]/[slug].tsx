@@ -31,7 +31,7 @@ export default function Post(props) {
 
         if(postId != post.id) {
             setPostId(post.id);
-            setPageInit(true);
+            setPageInit(false);
             return;
         }
 
@@ -46,7 +46,6 @@ export default function Post(props) {
     return (
         <Container>
             <PostBody post={post} mounting={pageInit} />
-            <Divider variant="middle" />
             <Paper square>
                 {morePosts.map((otherPost, ind) => (
                     <div key={'postCard-'+ind}>
