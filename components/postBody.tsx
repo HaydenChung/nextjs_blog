@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import CalendarDate from "@/components/calendarDate";
 
 type PostBodyProps = {
     post: PostInterface;
@@ -43,6 +44,7 @@ export default function PostBody(props: PostBodyProps) {
     const classes = useStyles();
     const imgDomain = process.env.NEXT_PUBLIC_STRAPI_API_URL;
     const imageElm = useRef<HTMLImageElement>();
+    const [postDate, setPostDate] = useState(null)
 
     useEffect(() => {
         if (
@@ -52,8 +54,21 @@ export default function PostBody(props: PostBodyProps) {
         )
             setCoverLoaded(true);
         // if(imageElm.current != null && imageElm.current.complete) setCoverLoaded(true);
-    });
+        console.log('postDate', post.date)
+        if(typeof post.date === 'string') {
+            try{
+                let curPostDate = new Date(post.date)
+                console.log('curPostDate', curPostDate)
+                setPostDate(curPostDate)
+            }catch(error) {
+                //Do nothing
+                console.log('getError!')
+            }
+        }
 
+    }, [post]);
+
+console.log('before render', postDate)
     return (
         <div className={classes.root}>
             {console.log("mounting", mounting, coverLoaded, mounting && coverLoaded)}
@@ -93,6 +108,7 @@ export default function PostBody(props: PostBodyProps) {
                         in={mounting && coverLoaded}
                     >
                         <Box p={3}>
+                            {postDate === null ? null : <CalendarDate date={postDate}/>}
                             <div dangerouslySetInnerHTML={{ __html: post.content }} />
                         </Box>
                     </Collapse>

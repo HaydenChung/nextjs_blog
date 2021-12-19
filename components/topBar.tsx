@@ -56,7 +56,7 @@ export default function TopBar(props: TopBarProps) {
                         <MenuIcon />
                     </IconButton>
                     <NavMenu prominent={true} displayLoadBar={setPageChanging.bind(this)} />
-                    <IconButton onClick={()=> { setDarkMode(!isDarkMode) }}
+                    <IconButton onClick={()=> { setDarkMode(!isDarkMode); sessionStorage.setItem('is_dark_mode',  isDarkMode ? 'false' : 'true') }}
                         edge="end"
                         className={classes.iconButton}
                     >

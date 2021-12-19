@@ -19,10 +19,12 @@ export default function Main(props) {
 
   useEffect(() => {
     // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
+//    const jssStyles = document.querySelector('#jss-server-side');
+//    if (jssStyles) {
+//      jssStyles.parentElement.removeChild(jssStyles);
+//    }
+
+    setDarkMode(sessionStorage.getItem('is_dark_mode') === 'true')
 
   });
 

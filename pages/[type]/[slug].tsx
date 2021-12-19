@@ -1,4 +1,3 @@
-import Strapi from '@/lib/Strapi'
 import remark from "remark";
 import remarkHtml from "remark-html"
 // import NavMenu from "@/components/navMenu"
