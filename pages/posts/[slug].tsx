@@ -2,7 +2,6 @@ import Strapi from '@/lib/Strapi';
 import remark from "remark";
 import remarkHtml from "remark-html";
 // import NavMenu from "@/components/navMenu"
-import TopBar from "@/components/topBar"
 import PostBody from "@/components/postBody"
 import BlogPostService from '@/lib/BlogPostService';
 import { useState, useEffect } from 'react';
