@@ -17,13 +17,19 @@ const useStyles = makeStyles((theme)=> ({
         borderRadius: '10px 10px 0 0',
         padding: '4px 10px',
         marginBottom: '2px',
-        backgroundColor: '#dd4621',
-        color: '#FFFFFF'
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.text.secondary,
+        fontWeight: 'bold',
+//        color: 
+        //        backgroundColor: '#dd4621',
+//        color: '#FFFFFF'
     },
     lowerBlock: {
         border: 'black 1px solid',
         borderRadius: '0 0 10px 10px',
-        padding: '10px'
+        padding: '10px',
+        backgroundColor: theme.palette.text.primary,
+        color: theme.palette.primary.dark
     }
 }));
 

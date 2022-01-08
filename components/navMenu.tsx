@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(5),
     },
     topTab: {
-        height: '6rem'
+        height: '6rem',
+        font: '700 13px Helvetica,Arial,Sans-Serif'
     },
     prominentDrop: {
         flexGrow: 1,

@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CalendarDate from "@/components/calendarDate";
+import classnames from "classnames"
 
 type PostBodyProps = {
     post: PostInterface;
@@ -22,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         paddingTop: "3rem",
+    },
+    paperContent: {
+        color: theme.palette.text.secondary
     },
     img: {
         // maxHeight: '30rem',
@@ -82,7 +86,7 @@ console.log('before render', postDate)
             </Typography>
 
             <Fade timeout={{ enter: 1000 }} in={mounting && coverLoaded}>
-                <Paper className={classes.paper} variant="outlined" square>
+                <Paper className={classes.paper} square elevation={3}>
                     {post.ogImage ? (
                         <Grid
                             container
@@ -109,7 +113,7 @@ console.log('before render', postDate)
                     >
                         <Box p={3}>
                             {postDate === null ? null : <CalendarDate date={postDate}/>}
-                            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                            <div className={classnames(['ck-content', classes.paperContent])} dangerouslySetInnerHTML={{ __html: post.content }} />
                         </Box>
                     </Collapse>
                 </Paper>
