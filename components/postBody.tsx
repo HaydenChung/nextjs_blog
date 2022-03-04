@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CalendarDate from "@/components/calendarDate";
 import classnames from "classnames"
+import Image from 'next/image'
 
 type PostBodyProps = {
     post: PostInterface;
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     imageWrapper: {
         maxHeight: "25rem",
         overflow: "hidden",
-        // position: 'relative'
+        position: 'relative'
     },
     title: {
         color: theme.palette.secondary.light,
